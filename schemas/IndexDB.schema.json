@@ -1,6 +1,6 @@
 {
     "$schema": "https://json-schema.org/draft-04/schema",
-    "id": "https://G2WebPublic/schemas/IndexDB.schema.json",
+    "id": "https://raw.githubusercontent.com/DaClan008/G2Public/main/schemas/IndexDB.schema.json",
     "title": "IndexedDB Schema",
     "type": "object",
     "definitions": {
@@ -77,6 +77,6 @@
     },
     "anyOf": [
         { "$schema": "https://json.schemastore.org/appsettings" },
-        { "$schema": "https://G2WebPublic/schemas/IndexDB.schema.json" }
+        { "$schema": "https://raw.githubusercontent.com/DaClan008/G2Public/main/schemas/IndexDB.schema.json" }
     ]
 }
