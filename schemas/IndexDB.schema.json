@@ -1,0 +1,82 @@
+{
+    "$schema": "https://json-schema.org/draft-04/schema",
+    "id": "https://G2WebPublic/schemas/IndexDB.schema.json",
+    "title": "IndexedDB Schema",
+    "type": "object",
+    "definitions": {
+        "indexParams": {
+            "type": "object",
+            "properties": {
+                "Unique": {
+                    "type": "boolean",
+                    "description": "If true, the index will not allow duplicate values for a single key."
+
+                },
+                "MultiEntry": {
+                    "type": "boolean",
+                    "description": "If true, the index will add an entry in the index for each array element when the keyPath resolves to an Array. If false, it will add one single entry containing the Array."
+                }
+            }
+        },
+        "mySchema": {
+            "type": "object",
+            "properties": {
+                "Version": {
+                    "description": "The version for current changes.",
+                    "type": "integer",
+                    "default": 1
+                },
+                "ObjectName": {
+                    "description": "The objectStore / Table Name.",
+                    "type": "string"
+                },
+                "IsNew": {
+                    "description": "Is the current version the first time table / objectstore is created.",
+                    "type": "boolean",
+                    "default": false
+                },
+                "Parameters": {
+                    "type": "object",
+                    "properties": {
+                        "AutoIncrement": {
+                            "description": "If true, the object store has a key generator. Defaults to false.",
+                            "type": "boolean"
+                        },
+                        "KeyPath": {
+                            "type": "string",
+                            "description": "The key path (name of property) to be used by the new object store. If empty or not specified, the object store is created without a key path and uses out-of-line keys. You can also pass in an array as a keyPath."
+                        }
+                    }
+                },
+                "Indexes": {
+                    "type": "array",
+                    "items": {
+                        "$ref": "#/definitions/indexParams"
+                    }
+                }
+            },
+            "required": [ "Version", "ObjectName" ]
+        }
+    },
+    "properties": {
+        "IndexedDB": {
+            "type": "object",
+            "properties": {
+                "DBName": {
+                    "type": "string",
+                    "description": "The name the Database will be stored as."
+                },
+                "Schema": {
+                    "description": "List of different Tables / ObjectStores associated with the Database.",
+                    "type": "array",
+                    "items": { "$ref": "#/definitions/mySchema" }
+                }
+            },
+            "required": [ "DBName" ]
+        }
+    },
+    "anyOf": [
+        { "$schema": "https://json.schemastore.org/appsettings" },
+        { "$schema": "https://G2WebPublic/schemas/IndexDB.schema.json" }
+    ]
+}
