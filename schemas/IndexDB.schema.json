@@ -30,8 +30,13 @@
                     "description": "The objectStore / Table Name.",
                     "type": "string"
                 },
-                "IsNew": {
-                    "description": "Is the current version the first time table / objectstore is created.",
+                "IsReNew": {
+                    "description": "If set to true the data of this objectStore will not be carried forward during this iteration.",
+                    "type": "boolean",
+                    "default": false
+                },
+                "IsRemove": {
+                    "description": "If set to true the table will be removed from the current version forward.",
                     "type": "boolean",
                     "default": false
                 },
