@@ -7,15 +7,30 @@
         "indexParams": {
             "type": "object",
             "properties": {
-                "Unique": {
-                    "type": "boolean",
-                    "description": "If true, the index will not allow duplicate values for a single key."
-
+                "IndexName": {
+                    "description": "The name of the index when called through C#",
+                    "type": "string",
+                    "pattern": "^[a-z0-9-.,_ ?!@#$~^&()+=|\\/\\[\\]{}]+$"
                 },
-                "MultiEntry": {
-                    "type": "boolean",
-                    "description": "If true, the index will add an entry in the index for each array element when the keyPath resolves to an Array. If false, it will add one single entry containing the Array."
-                }
+                "IndexKey": {
+                    "description": "The actual column name where the data for the index can be found.",
+                    "type": "string"
+                },
+                "Parameters" {
+                    "type": "object",
+                    "properties": {
+                        "Unique": {
+                            "type": "boolean",
+                            "description": "If true, the index will not allow duplicate values for a single key."
+
+                        },
+                        "MultiEntry": {
+                            "type": "boolean",
+                            "description": "If true, the index will add an entry in the index for each array element when the keyPath resolves to an Array. If false, it will add one single entry containing the Array."
+                        }
+                    }
+                },
+                
             }
         },
         "mySchema": {
@@ -28,10 +43,11 @@
                 },
                 "ObjectName": {
                     "description": "The objectStore / Table Name.",
-                    "type": "string"
+                    "type": "string",
+                    "pattern": "^[a-z0-9-.,_ ?!@#$~^&()+=|\\/\\[\\]{}]+$"
                 },
                 "IsReNew": {
-                    "description": "If set to true the data of this objectStore will not be carried forward during this iteration.",
+                    "description": "If set to true the data currently in the objectStore will not be carried forward during this iteration.",
                     "type": "boolean",
                     "default": false
                 },
