@@ -41,7 +41,7 @@
                 "ObjectName": {
                     "description": "The objectStore / Table Name.",
                     "type": "string",
-                    "pattern": "^[a-z0-9-{}()\\\\/,`~!@#\\$%\\*_+=:;\\.<>\\?]+$"
+                    "pattern": "^[a-z]"
                 },
                 "IsReNew": {
                     "description": "If set to true the data currently in the objectStore will not be carried forward during this iteration.",
@@ -84,7 +84,7 @@
                 "DBName": {
                     "type": "string",
                     "description": "The name the Database will be stored as.",
-                    "pattern": "^[a-z0-9-{}()\\\\/,`~!@#\\$%\\*_+=:;\\.<>\\?]+$"
+                    "pattern": "^[a-z]"
                 },
                 "Schema": {
                     "description": "List of different Tables / ObjectStores associated with the Database.",
