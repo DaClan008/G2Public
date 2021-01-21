@@ -4,17 +4,16 @@
     "title": "IndexedDB Schema",
     "type": "object",
     "definitions": {
-        "indexParams": {
+        "indexProperty": {
             "type": "object",
             "properties": {
                 "IndexName": {
-                    "description": "The name of the index when called through C#",
                     "type": "string",
-                    "pattern": "^[a-z0-9-,_ ?!@#$~^&()+=|{}]+$"
+                    "description": "The name for the index to be used in the C# class."
                 },
                 "IndexKey": {
-                    "description": "The actual column name where the data for the index can be found.",
-                    "type": "string"
+                    "type": "string",
+                    "description": "The path to the column/property that will be indexed."
                 },
                 "Parameters": {
                     "type": "object",
@@ -22,7 +21,6 @@
                         "Unique": {
                             "type": "boolean",
                             "description": "If true, the index will not allow duplicate values for a single key."
-
                         },
                         "MultiEntry": {
                             "type": "boolean",
@@ -43,7 +41,7 @@
                 "ObjectName": {
                     "description": "The objectStore / Table Name.",
                     "type": "string",
-                    "pattern": "^[a-z0-9-,_ ?!@#$~^&()+=|{}]+$"
+                    "pattern": "^[a-z0-9-{}()\\\\/,`~!@#\\$%\\*_+=:;\\.<>\\?]+$"
                 },
                 "IsReNew": {
                     "description": "If set to true the data currently in the objectStore will not be carried forward during this iteration.",
@@ -71,7 +69,7 @@
                 "Indexes": {
                     "type": "array",
                     "items": {
-                        "$ref": "#/definitions/indexParams"
+                        "$ref": "#/definitions/indexProperty"
                     }
                 }
             },
@@ -81,10 +79,12 @@
     "properties": {
         "IndexedDB": {
             "type": "object",
+            "id": "IndexedDBProperties",
             "properties": {
                 "DBName": {
                     "type": "string",
-                    "description": "The name the Database will be stored as."
+                    "description": "The name the Database will be stored as.",
+                    "pattern": "^[a-z0-9-{}()\\\\/,`~!@#\\$%\\*_+=:;\\.<>\\?]+$"
                 },
                 "Schema": {
                     "description": "List of different Tables / ObjectStores associated with the Database.",
