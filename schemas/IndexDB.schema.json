@@ -10,7 +10,7 @@
                 "IndexName": {
                     "description": "The name of the index when called through C#",
                     "type": "string",
-                    "pattern": "^[a-z0-9-.,_ ?!@#$~^&()+=|\\/\\[\\]{}]+$"
+                    "pattern": "^[a-z0-9-,_ ?!@#$~^&()+=|{}]+$"
                 },
                 "IndexKey": {
                     "description": "The actual column name where the data for the index can be found.",
@@ -44,7 +44,7 @@
                 "ObjectName": {
                     "description": "The objectStore / Table Name.",
                     "type": "string",
-                    "pattern": "^[a-z0-9-.,_ ?!@#$~^&()+=|\\/\\[\\]{}]+$"
+                    "pattern": "^[a-z0-9-,_ ?!@#$~^&()+=|{}]+$"
                 },
                 "IsReNew": {
                     "description": "If set to true the data currently in the objectStore will not be carried forward during this iteration.",
